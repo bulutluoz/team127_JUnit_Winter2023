@@ -55,7 +55,7 @@ public class C01_BeforeAfterNotasyonlari {
             System.out.println("phone testi PASSED");
         }else{
             System.out.println("phone testi FAILED");
-            //throw new AssertionFailedError();
+            throw new AssertionFailedError();
         }
         ReusableMethods.bekle(2);
     }
