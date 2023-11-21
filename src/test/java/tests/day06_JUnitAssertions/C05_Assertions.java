@@ -34,6 +34,8 @@ public class C05_Assertions {
     //		○ logoTest => BestBuy logosunun görüntülendigini test edin
     //		○ FrancaisLinkTest => Fransizca Linkin görüntülendiğini test edin
 
+
+
     static WebDriver driver;
 
     @BeforeClass
