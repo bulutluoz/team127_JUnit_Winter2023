@@ -36,11 +36,17 @@ public class C04_DropdownMenu extends TestBase {
         selectCurrency.selectByValue("EUR");
     //9. “amount” kutusuna bir sayi girin
         driver.findElement(By.id("pc_amount")).sendKeys("100");
-    //10. “US Dollars” in secilmedigini test edin
+    //10. currency olarak “US Dollars” in secilmedigini test edin
         String unexpectedOptionYazisi = "US Dollars";
         String actualOptionYazisi = selectCurrency.getFirstSelectedOption().getText();
 
         Assert.assertNotEquals(unexpectedOptionYazisi,actualOptionYazisi);
+
+    // Radio button  U.S. Dollars'in secilmedigini test edin
+
+        WebElement usDollarsradioButtonelementi = driver.findElement(By.id("pc_inDollars_true"));
+        Assert.assertFalse(usDollarsradioButtonelementi.isSelected());
+
     //11. “Selected currency” butonunu secin
         driver.findElement(By.id("pc_inDollars_false")).click();
     //12. “Calculate Costs” butonuna basin sonra “purchase” butonuna basin
