@@ -29,7 +29,7 @@ public class C01_RadioButton {
 
     @After
     public void teardown(){
-        driver.quit();
+        driver.close();
     }
 
     @Test
@@ -42,7 +42,7 @@ public class C01_RadioButton {
         WebElement kadinRadioButton = driver.findElement(By.id("inlineRadio1"));
         WebElement erkekRadioButton = driver.findElement(By.id("inlineRadio2"));
         WebElement digerRadioButton = driver.findElement(By.id("inlineRadio3"));
-
+        ReusableMethods.bekle(2);
         erkekRadioButton.click();
         //	c. Sectiginiz radio button’un seçili, ötekilerin seçili olmadigini test edin
 
