@@ -22,6 +22,7 @@ public class C04_GoogleAramaTesti {
         //2- https://www.google.com/ adresine gidin
         driver.get("https://www.google.com/");
         //3- cookies uyarisini kabul ederek kapatin
+        ReusableMethods.bekle(10);
         driver.findElement(By.xpath("//*[text()='Accept all']")).click();
         //4- Sayfa basliginin “Google” ifadesi icerdigini test edin
         String expectedTitleIcerik = "Google";
