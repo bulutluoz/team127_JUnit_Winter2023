@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -44,6 +45,8 @@ public class C01_RadioButton {
         WebElement digerRadioButton = driver.findElement(By.id("inlineRadio3"));
         ReusableMethods.bekle(2);
         erkekRadioButton.click();
+
+        ReusableMethods.bekle(2);
         //	c. Sectiginiz radio button’un seçili, ötekilerin seçili olmadigini test edin
 
         Assert.assertTrue(erkekRadioButton.isSelected());
