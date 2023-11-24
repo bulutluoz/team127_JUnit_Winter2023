@@ -83,6 +83,8 @@ public class C06_KontrolsuzCokluWindowKullanimi extends TestBase {
 
         Assert.assertTrue(actualUrl.contains(expectedUrlIcerik));
 
-        ReusableMethods.bekle(8);
+        System.out.println(wHDSeti);
+
+        ReusableMethods.bekle(3);
     }
 }
