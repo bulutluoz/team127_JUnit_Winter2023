@@ -33,6 +33,7 @@ public class C04_Actions extends TestBase {
         ReusableMethods.bekle(1);
         driver = ReusableMethods.titleIleSayfaDegistir(driver,"Elemental Selenium | Elemental Selenium");
 
+        ReusableMethods.bekle(2);
         WebElement h1TagYaziElementi = driver.findElement(By.tagName("h1"));
 
         String expectedYazi = "Make sure your code lands";
