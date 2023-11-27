@@ -58,6 +58,7 @@ public class ReusableMethods {
             return each;
         }
 
-        return null;
+        return null; // bu satirin hic calismayacagini biliyoruz
+                     // sadece javanin endiselerini gidermek icin yazdik
     }
 }
