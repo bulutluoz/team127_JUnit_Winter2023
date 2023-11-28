@@ -28,5 +28,6 @@ public class C06_BilgisayardakiDosyayiTestEtme {
 
         Assert.assertTrue(Files.exists(Paths.get(dinamikDosyaYolu)));
 
+
     }
 }
