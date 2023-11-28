@@ -1,4 +1,4 @@
-package tests.day09;
+package tests.day09_actions;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,11 +7,16 @@ import org.openqa.selenium.WebElement;
 import utilities.ReusableMethods;
 import utilities.TestBase;
 
-public class C02_Odev2 extends TestBase {
+public class C01_Odev extends TestBase {
 
-    // icinde oldugumuz sayfa ve driver'i input olarak alip
-    // ikinci sayfa Window Handle Degerini bize donduren
-    // bir method kullanalim
+    /*
+        Kontrolsuz bir tab/window acildiginda
+        eger yeni acilan tab/window'un title degeri biliniyorsa
+        driver'i acilan sayfaya geciren bir method olusturun
+
+        input : yeniTitle , Test Otomasyonu - Electronics
+
+     */
 
     @Test
     public void test01(){
@@ -32,8 +37,7 @@ public class C02_Odev2 extends TestBase {
         driver.findElement(By.linkText("Electronics Products")).click();
         //● Electronics sayfasinin acildigini test edin
 
-        String ikinciWhd = ReusableMethods.ilkSayfaWhdIleIkinciSayfaWhdBul(driver,ilkSayfaWhd);
-        driver.switchTo().window(ikinciWhd);
+        driver = ReusableMethods.titleIleSayfaDegistir(driver,"Test Otomasyonu - Electronics");
 
         //● Bulunan urun sayisinin 16 olduğunu test edin
         WebElement sonucYaziElementi = driver.findElement(By.xpath("//*[@*='product-count-text']"));
