@@ -1,4 +1,4 @@
-package tests.day11_waits_cookies;
+package tests.day11_waits_cookies_webTables;
 
 import org.junit.Assert;
 import org.junit.Test;
