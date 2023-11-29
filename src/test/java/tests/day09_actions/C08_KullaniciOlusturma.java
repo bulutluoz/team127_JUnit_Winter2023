@@ -16,9 +16,11 @@ public class C08_KullaniciOlusturma extends TestBase {
 
         //1- https://www.testotomasyonu.com adresine gidelim
         driver.get("https://www.testotomasyonu.com");
+        ReusableMethods.bekle(1);
         //2- Account linkine tiklayin
         driver.findElement(By.xpath("(//span[text()='Account'])[1]")).click();
         //3- Sign Up linkine basalim
+        ReusableMethods.bekle(1);
         driver.findElement(By.xpath("//*[text()=' Sign Up']")).click();
         //4- Ad, soyad, mail ve sifre kutularina deger yazalim ve Sign Up butonuna basalim
 
@@ -51,6 +53,7 @@ public class C08_KullaniciOlusturma extends TestBase {
 
         emailKutusu.sendKeys("bulut@gmail.com");
         passwordKutusu.sendKeys("12345");
+        ReusableMethods.bekle(1);
         signInButonu.click();
 
         WebElement logoutLinki = driver.findElement(By.xpath("//span[text()='Logout']"));
@@ -60,6 +63,6 @@ public class C08_KullaniciOlusturma extends TestBase {
         ReusableMethods.bekle(2);
         logoutLinki.click();
 
-        ReusableMethods.bekle(5);
+        ReusableMethods.bekle(2);
     }
 }
