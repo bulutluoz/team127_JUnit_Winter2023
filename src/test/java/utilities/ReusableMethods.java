@@ -141,4 +141,34 @@ public class ReusableMethods {
 
         ReusableMethods.bekle(5);
     }
+
+    public static void istenenWebelementScreenshot(WebElement istenenWebelement){
+
+        // 1.adim screenshot alacagimiz webelementi locate et
+
+        // 2.adim scrennshot'i kaydedecegimiz file'i olusturalim
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter istenenFormat = DateTimeFormatter.ofPattern("yyMMddHHmmss");
+        String dinamikDosyaYolu = "target/screenshots/istenenWebelementScreenshot" +
+                localDateTime.format(istenenFormat)+
+                ".jpg";
+
+
+        File istenenWebelementScreenshot = new File(dinamikDosyaYolu);
+
+        // 3.adim webelement uzerinden screenshot'i alip gecici bir dosyaya kaydedin
+
+        File geciciDosya = istenenWebelement.getScreenshotAs(OutputType.FILE);
+
+        // 4.adim gecici dosyayi asil dosyaya kopyalayalim
+
+        try {
+            FileUtils.copyFile(geciciDosya,istenenWebelementScreenshot);
+        } catch (IOException e) {
+            System.out.println("Screenshot kopyalanamadi");
+            throw new RuntimeException(e);
+        }
+
+
+    }
 }
