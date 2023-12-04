@@ -1,8 +1,16 @@
 package utilities;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -60,5 +68,77 @@ public class ReusableMethods {
 
         return null; // bu satirin hic calismayacagini biliyoruz
                      // sadece javanin endiselerini gidermek icin yazdik
+    }
+
+    public static void tumSayfaTakeScreenshot(WebDriver driver){
+        // tum sayfanin fotografini cekip kaydedin
+
+        // 1.adim tss objesi olustur
+
+        TakesScreenshot tss = (TakesScreenshot) driver;
+
+        // 2.adim fotografi kaydedecegimiz dosya yolu ile bir File olusturalim
+        //   her yeni kaydedilen resmin oncekinin ustune kaydedilmemesi icin
+        //   kaydedilecek dosya yolunu dinamik yapabiliriz
+        //   dinamik yapmak icin dosya yoluna tarih etiketi ekleyelim
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter istenenFormat = DateTimeFormatter.ofPattern("yyMMddHHmmss");
+        String dinamikDosyaYolu = "target/screenshots/tumSayfaScreenshot" +
+                                    localDateTime.format(istenenFormat)+
+                                    ".jpg";
+
+        File tumSayfaScreenshot = new File(dinamikDosyaYolu);
+
+        // 3.adim tss objesini kullanarak fotografi cekip, gecici bir dosyaya kaydedelim
+
+        File geciciDosya = tss.getScreenshotAs(OutputType.FILE);
+
+        // 4.adim : gecici dosyayi, asil dosyaya kopyalayalim
+
+        try {
+            FileUtils.copyFile(geciciDosya,tumSayfaScreenshot);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        ReusableMethods.bekle(5);
+    }
+
+    public static void tumSayfaTakeScreenshot(String testAdi,WebDriver driver){
+        // tum sayfanin fotografini cekip kaydedin
+
+        // 1.adim tss objesi olustur
+
+        TakesScreenshot tss = (TakesScreenshot) driver;
+
+        // 2.adim fotografi kaydedecegimiz dosya yolu ile bir File olusturalim
+        //   her yeni kaydedilen resmin oncekinin ustune kaydedilmemesi icin
+        //   kaydedilecek dosya yolunu dinamik yapabiliriz
+        //   dinamik yapmak icin dosya yoluna tarih etiketi ekleyelim
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter istenenFormat = DateTimeFormatter.ofPattern("yyMMddHHmmss");
+        String dinamikDosyaYolu = "target/screenshots/"+
+                testAdi
+                +
+                localDateTime.format(istenenFormat)+
+                ".jpg";
+
+        File tumSayfaScreenshot = new File(dinamikDosyaYolu);
+
+        // 3.adim tss objesini kullanarak fotografi cekip, gecici bir dosyaya kaydedelim
+
+        File geciciDosya = tss.getScreenshotAs(OutputType.FILE);
+
+        // 4.adim : gecici dosyayi, asil dosyaya kopyalayalim
+
+        try {
+            FileUtils.copyFile(geciciDosya,tumSayfaScreenshot);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        ReusableMethods.bekle(5);
     }
 }
